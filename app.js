@@ -70,7 +70,7 @@ app.post('/doInsertProduct', async(req, res) => {
 // Delete Product
 app.get('/delete', async(req, res) => {
     let id = req.query.id;
-    var ObjectID = require('mongoDB').ObjectID;
+    var ObjectID = require('mongodb').ObjectID;
     let client = await MongoClient.connect(url);
     console.log(id);
     let dbo = client.db('ProductDB');
@@ -94,7 +94,7 @@ app.get('/doSearch', async(req, res) => {
 // Update Product 
 app.get('/update', async(req, res) => {
     let id = req.query.id;
-    var ObjectID = require('mongoDB').ObjectID;
+    var ObjectID = require('mongodb').ObjectID;
     let client = await MongoClient.connect(url);
     let dbo = client.db('ProductDB');
     let product = await dbo.collection("Products").find({ _id: ObjectID(id.toString()) }).toArray();
